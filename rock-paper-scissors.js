@@ -1,31 +1,35 @@
+let playerSelection = '';
+let computerSelection = '';
+let playerWins = 0;
+let computerWins = 0;
+
 function playerMove() {
     let playerInput = window.prompt('Type Rock, Paper or Scissors');
-    let playerSelection = playerInput.toLowerCase(); // Converting the input all to lower cases
+    playerSelection = playerInput.toLowerCase(); // Converting the input all to lower cases
     playerSelection = playerSelection.charAt(0).toUpperCase() + playerSelection.slice(1); // Converting only the first letter to upper case
     while (['Rock', 'Paper', 'Scissors'].indexOf(playerSelection) === -1) {
         playerInput = window.prompt('You made a mistake. Be sure you type Rock, Paper or Scissors correctly');
         playerSelection = playerInput.toLowerCase(); // Converting the input all to lower cases
         playerSelection = playerSelection.charAt(0).toUpperCase() + playerSelection.slice(1); // Converting only the first letter to upper case
     };
-    
-    return playerSelection;
 };
 
 function computerMove() {
-    let computerSelection = '';
     let number = Math.floor(Math.random()*3);
     switch (number) {
         case 0:
             computerSelection = 'Rock';
-            return computerSelection;
+            break;
+            // return computerSelection;
             
         case 1:
             computerSelection = 'Paper';
-            return computerSelection;
+            break;
+            // return computerSelection;
         
         case 2:
             computerSelection = 'Scissors';
-            return computerSelection;           
+            // return computerSelection;           
     };
 };
 
@@ -63,12 +67,10 @@ function playRound(playerSelection, computerSelection, i) {
     };
 };
 
-let playerWins = 0;
-let computerWins = 0;
 
 for(let i = 0; i < 5; i++) {
-    playerSelection = playerMove();
-    computerSelection = computerMove();
+    playerMove();
+    computerMove();
     playRound(playerSelection, computerSelection, i);
 };
 
